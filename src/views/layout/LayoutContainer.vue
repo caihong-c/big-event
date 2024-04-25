@@ -10,6 +10,24 @@ import {
   CaretBottom
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+// 处理用户信息
+import { useUserStore } from '@/stores'
+const useUser = useUserStore()
+useUser.getUserInfo()
+console.log(useUser.userInfo)
+// 下拉菜单
+const handleCommand = (key) => {
+  // 退出登陆
+  if (key === 'logout') {
+    useUser.removeToken() // 清除token
+    useUser.setUserInfo({}) // 清除个人信息
+    router.push('/login') // 跳转到登陆页面
+  } else {
+    router.push(`/user/${key}`)
+  }
+}
 </script>
 
 <template>
@@ -53,10 +71,14 @@ import avatar from '@/assets/default.png'
     </el-aside>
     <el-container>
       <el-header>
-        <div>黑马程序员：<strong>小帅鹏</strong></div>
-        <el-dropdown placement="bottom-end">
+        <div>
+          用户名：<strong>{{
+            useUser.userInfo.nickname || useUser.userInfo.username
+          }}</strong>
+        </div>
+        <el-dropdown placement="bottom-end" @command="handleCommand">
           <span class="el-dropdown__box">
-            <el-avatar :src="avatar" />
+            <el-avatar :src="useUser.userInfo.user_pic || avatar" />
             <el-icon><CaretBottom /></el-icon>
           </span>
           <template #dropdown>
@@ -80,7 +102,7 @@ import avatar from '@/assets/default.png'
       <el-main>
         <router-view></router-view>
       </el-main>
-      <el-footer>大事件 ©2023 Created by 黑马程序员</el-footer>
+      <el-footer>大事件 ©2024 Created by caihong</el-footer>
     </el-container>
   </el-container>
 </template>
