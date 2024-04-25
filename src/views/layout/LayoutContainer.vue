@@ -21,9 +21,26 @@ console.log(useUser.userInfo)
 const handleCommand = (key) => {
   // 退出登陆
   if (key === 'logout') {
-    useUser.removeToken() // 清除token
-    useUser.setUserInfo({}) // 清除个人信息
-    router.push('/login') // 跳转到登陆页面
+    ElMessageBox.confirm('你确认要退出吗?', '温馨提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+      .then(() => {
+        ElMessage({
+          type: 'success',
+          message: '已退出'
+        })
+        useUser.removeToken() // 清除token
+        useUser.setUserInfo({}) // 清除个人信息
+        router.push('/login') // 跳转到登陆页面
+      })
+      .catch(() => {
+        ElMessage({
+          type: 'info',
+          message: '已取消'
+        })
+      })
   } else {
     router.push(`/user/${key}`)
   }
