@@ -19,3 +19,14 @@ export const useLoginService = (username, password) => {
 export const useUserInfoService = () => {
   return request.get('/my/userinfo')
 }
+
+// 更新用户基本资料
+export const updateUserInfoService = (data) => request.put('/my/userinfo', data)
+
+// 更新用户头像
+export const updateUserAvatarService = (avatar) =>
+  request.patch('/my/update/avatar', { avatar })
+
+// 更新用户密码
+export const updateUserPwdService = (data) =>
+  request.patch('/my/updatepwd', data)
