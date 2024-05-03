@@ -44,7 +44,7 @@ function validateEqual(rule, value, callback) {
 }
 
 async function submitForm() {
-  pwdFormRef.value.validate()
+  await pwdFormRef.value.validate()
   await updateUserPwdService(pwdForm.value)
   ElMessage.success('修改成功')
   pwdFormRef.value.resetFields()

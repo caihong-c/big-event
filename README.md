@@ -1,35 +1,33 @@
-# big-event
+# 大事件管理系统
 
-This template should help get you started developing with Vue 3 in Vite.
+基于Vue3和element-Plus组件库实现的大事件管理系统，涵盖了文章分类、文章管理以及个人中心等核心模块。
+可以轻松地进行文章分类的新增、删除或编辑操作，同时也支持文章的发布、删除和编辑功能。在个人中心模块，
+用户能够便捷地修改个人资料、更换头像，甚至修改密码，以满足个性化的需求。
 
-## Recommended IDE Setup
+- 技术实现
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+使用最新的pinia状态管理工具，并使用插件实现pinia持久化，同时对pinia仓库进行统一管理
 
-## Customize configuration
+使用eslint + prettier + husky进行代码检查，保证代码规范
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+封装API接口，对请求进行统一管理
 
-## Project Setup
+使用路由前置守卫，进行登陆访问拦截
 
-```sh
-pnpm install
+使用路由懒加载，进行性能优化
+
+- 预览
+
+双击dist目录下的index.html
+
+- 运行
+
+```
+npm run dev
 ```
 
-### Compile and Hot-Reload for Development
+或
 
-```sh
+```
 pnpm dev
-```
-
-### Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
 ```
