@@ -55,7 +55,7 @@ const rules = {
 const form = ref(null)
 const register = async () => {
   await form.value.validate()
-  console.log('注册成功')
+  // console.log('注册成功')
   await useRegisterService(
     formModule.value.username,
     formModule.value.password,
@@ -78,7 +78,7 @@ const login = async () => {
   useUser.setToken(res.data.token)
   ElMessage.success(res.data.message)
   router.push('/')
-  console.log(res)
+  // console.log(res)
 }
 
 // 注册登陆切换时重置表单

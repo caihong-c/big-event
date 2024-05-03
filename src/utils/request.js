@@ -3,8 +3,10 @@ import { useUserStore } from '@/stores'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
 
+const baseURL = 'http://big-event-vue-api-t.itheima.net'
+
 const request = axios.create({
-  baseURL: 'http://big-event-vue-api-t.itheima.net',
+  baseURL: baseURL,
   timeout: 5000
 })
 
@@ -30,7 +32,7 @@ request.interceptors.response.use(
   function (response) {
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
-    console.log(response)
+    // console.log(response)
     // code = 0 时,处理业务成功
     if (response.data.code === 0) {
       return response
@@ -56,3 +58,4 @@ request.interceptors.response.use(
 )
 
 export default request
+export { baseURL }

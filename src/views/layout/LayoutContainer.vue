@@ -16,7 +16,7 @@ const router = useRouter()
 import { useUserStore } from '@/stores'
 const useUser = useUserStore()
 useUser.getUserInfo()
-console.log(useUser.userInfo)
+// console.log(useUser.userInfo)
 // 下拉菜单
 const handleCommand = (key) => {
   // 退出登陆
